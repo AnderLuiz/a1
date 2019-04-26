@@ -25,7 +25,7 @@ console.log(div(a, b));
 div(a, b).then((result) => {
   console.log('Resultado (Then):', result);
 }).catch((error) => {
-  console.log('Erro:', error);
+  console.log('Erro:', error.message);
 });
 
 console.log('----');
