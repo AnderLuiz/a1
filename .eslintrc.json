@@ -7,6 +7,7 @@
       "simple-import-sort/sort": "error"
     },
     "plugins": [
+      "import",
       "simple-import-sort"
     ]
 }
