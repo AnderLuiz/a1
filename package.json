@@ -1,12 +1,14 @@
 {
-  "name": "@gamatec/calc",
-  "version": "1.0.0",
+  "name": "@gamatec/g-calc",
+  "version": "1.0.4",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/babel-node index.js",
-    "eslint": "./node_modules/.bin/eslint --fix . --ignore-path .gitignore"
+    "eslint": "./node_modules/.bin/eslint --fix . --ignore-path .gitignore",
+    "build": "./node_modules/.bin/babel ./calc --out-dir dist --copy-files --ignore \"node_modules/**/*.js\"",
+    "prepublish": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +20,14 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-simple-import-sort": "^3.0.0"
-  }
+    "eslint-plugin-simple-import-sort": "^3.0.0",
+    "install": "^0.12.2",
+    "npm": "^6.9.0"
+  },
+  "dependencies": {
+    "@gamatec/g-calc": "^1.0.4"
+  },
+  "files": [
+    "dist/*"
+  ]
 }
