@@ -8,14 +8,9 @@ const FluentTransport = fluentd.support.winstonTransport();
 
 const formatLog = winston.format(log => ({ ...log, ...{ origin: 'api', env: config.env } }));
 
-let transports;
-if (process.env.DISABLE_LOGS === 'true' || process.env.DISABLE_EXPRESS_LOGS === 'true') {
-  transports = [new winston.transports.Console({ level: 'emerg', silent: true })];
-} else {
-  transports = [
-    ...(config.fluentd ? [new FluentTransport(config.appName, config.fluentd)] : [new winston.transports.Console()]),
-  ];
-}
+const transports = [
+  ...(config.fluentd ? [new FluentTransport(config.appName, config.fluentd)] : [new winston.transports.Console()]),
+];
 
 const logger = expressWinston.logger({
   format: winston.format.combine(

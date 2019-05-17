@@ -15,16 +15,11 @@ const formatLog = winston.format((l) => {
   return log;
 });
 
-let transports;
-if (process.env.DISABLE_LOGS === 'true' || process.env.DISABLE_NORMAL_LOGS === 'true') {
-  transports = [new winston.transports.Console({ level: 'emerg', silent: true })];
-} else {
-  transports = [
-    ...(config.fluentd
-      ? [new FluentTransport(config.appName, config.fluentd)]
-      : [new winston.transports.Console()]),
-  ];
-}
+const transports = [
+  ...(config.fluentd
+    ? [new FluentTransport(config.appName, config.fluentd)]
+    : [new winston.transports.Console()]),
+];
 
 const logger = winston.createLogger({
   format: winston.format.combine(
