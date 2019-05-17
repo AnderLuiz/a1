@@ -1,17 +1,39 @@
 {
-  "name": "@gamatec/g-calc",
+  "name": "@gamatec/api-test",
   "version": "1.0.4",
   "description": "",
   "main": "./dist/index.js",
+  "ntl": {
+    "descriptions": {
+      "start": "Executa o projeto",
+      "nodemon": "Executa o projeto com o nodemon",
+      "test": "Executa os testes",
+      "eslint": "Roda o linter (Eslint) no projeto"
+    }
+  },
   "scripts": {
+    "menu": "./node_modules/.bin/ntl -d --exclude menu menu-* pretest",
+    "menu-dev": "NODE_ENV=development npm run menu",
+    "menu-test": "NODE_ENV=test npm run menu",
+    "menu-prod": "NODE_ENV=production npm run menu",
+    "start": "./node_modules/.bin/babel-node server.js",
+    "nodemon": "nodemon --exec babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/babel-node index.js",
     "eslint": "./node_modules/.bin/eslint --fix . --ignore-path .gitignore",
-    "build": "./node_modules/.bin/babel ./calc --out-dir dist --copy-files --ignore \"node_modules/**/*.js\"",
     "prepublish": "npm run build"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@gamatec/g-calc": "^1.0.4",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.0",
+    "express-winston": "^3.1.0",
+    "fluent-logger": "^3.3.1",
+    "winston": "^3.2.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
@@ -22,10 +44,9 @@
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-simple-import-sort": "^3.0.0",
     "install": "^0.12.2",
-    "npm": "^6.9.0"
-  },
-  "dependencies": {
-    "@gamatec/g-calc": "^1.0.4"
+    "nodemon": "^1.19.0",
+    "npm": "^6.9.0",
+    "ntl": "^3.2.4"
   },
   "files": [
     "dist/*"
